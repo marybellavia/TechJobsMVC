@@ -32,10 +32,9 @@
 
     <h3>@ViewBag.jobsResults.Count Result(s)</h3>
 
-    @{
-        /* using nested foreach loops to accesss dictionary from ViewBag.jobsResults (which is a list)
-         * and then the inner loop is so I can access the kvp in each dictionary */
-    }
+    /* using nested foreach loops to accesss dictionary from ViewBag.jobsResults (which is a list)
+    * and then the inner loop is so I can access the kvp in each dictionary */
+  
 
     @foreach (Dictionary<string, string> job in ViewBag.jobsResults)
     {
