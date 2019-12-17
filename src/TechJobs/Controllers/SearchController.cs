@@ -13,7 +13,7 @@ namespace TechJobs.Controllers
             return View();
         }
 
-        public IActionResult Result(string searchType, string searchTerm)
+        public IActionResult Results(string searchType, string searchTerm)
         {
             // making a new list of dictionarys for results of the search
             List<Dictionary<string, string>> jobsResults = new List<Dictionary<string, string>>();
@@ -22,15 +22,18 @@ namespace TechJobs.Controllers
             if (searchType != "all")
             {
                 jobsResults = JobData.FindByColumnAndValue(searchType, searchTerm);
+                ViewBag.jobsResults = jobsResults;
             }
             else
             {
                 jobsResults = JobData.FindByValue(searchTerm);
+                ViewBag.jobsResults = jobsResults;
             }
 
-            // so i've created this dictionary of results -- now WTF do I do with it
+            ViewBag.columns = ListController.columnChoices;
+            ViewBag.title = "Results";
+            return View("Views/Search/Index.cshtml");
 
-            return View("Index");
 
         }
             // TODO #1 - Create a Results action method to process 
